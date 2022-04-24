@@ -20,10 +20,13 @@ public class ReservaLivroController {
 
     @PatchMapping
     @Transactional
-    public ResponseEntity<?> reservar(@PathVariable String ISBN) {
-        Exemplar exemplar = repository.findFirstByReservadoisFalseANDLivro_ISBNequals(ISBN)
+    public ResponseEntity<?> reservar(@PathVariable String isbn) {
+//        Exemplar exemplar = repository.findFirstByReservadoisFalseANDLivro_ISBNequals(ISBN)
+//                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Não existe exemplar cadastrado para este ISBN"));
+        
+        Exemplar exemplar = repository.findFirstByReservadoIsFalseAndLivro_Isbn(isbn)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Não existe exemplar cadastrado para este ISBN"));
-
+        
         exemplar.reservar();
 
         repository.save(exemplar);

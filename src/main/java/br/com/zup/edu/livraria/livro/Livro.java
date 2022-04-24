@@ -23,14 +23,14 @@ public class Livro {
 
     @Column(nullable = false)
     @org.hibernate.validator.constraints.ISBN(type = org.hibernate.validator.constraints.ISBN.Type.ANY)
-    private String ISBN;
+    private String isbn;
 
 
-    public Livro(String nome, String resumo, String autor, String ISBN) {
+    public Livro(String nome, String resumo, String autor, String isbn) {
         this.nome = nome;
         this.resumo = resumo;
         this.autor = autor;
-        this.ISBN = ISBN;
+        this.isbn = isbn;
     }
 
     /**
